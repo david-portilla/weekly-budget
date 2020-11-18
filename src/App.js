@@ -1,6 +1,12 @@
+import { useState } from 'react';
 import Question from './Question';
 
 function App () {
+
+  // Define initial budget
+  const [ budget, saveBudget ] = useState(0)
+  const [ remainBudget, setRemainBudget ] = useState(0)
+
   return (
     <div className="container">
       <header>
@@ -8,7 +14,10 @@ function App () {
       </header>
 
       <div className="contenido-principal contenido">
-        <Question></Question>
+        <Question
+          saveBudget={ saveBudget }
+          setRemainBudget={ setRemainBudget }
+        />
       </div>
     </div>
   );

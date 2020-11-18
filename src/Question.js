@@ -3,7 +3,7 @@ import Error from './Error'
 
 
 
-const Question = () => {
+const Question = ({ saveBudget, setRemainBudget }) => {
 
   const [ amount, setAmount ] = useState(0)
   const [ error, setError ] = useState(false)
@@ -22,8 +22,10 @@ const Question = () => {
       return
     }
 
-    // Send value
+    // Save amount
     setError(false)
+    saveBudget(amount)
+    setRemainBudget(amount)
   }
 
   return (
