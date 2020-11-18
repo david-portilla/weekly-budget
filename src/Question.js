@@ -2,23 +2,33 @@ import React, { useState } from 'react'
 
 const Question = () => {
 
-  const [ amount, saveAmount ] = useState(0)
+  const [ amount, setAmount ] = useState(0)
+  const [ error, setError ] = useState(false)
 
   // Save the budget on the state
   const setBudget = e => {
-    saveAmount(parseInt(e.target.value, 10))
+    setAmount(parseInt(e.target.value, 10))
   }
   // Add the budget to the list
   const addBudget = e => {
     e.preventDefault()
+
     // Validate value
+    if (amount < 1 || isNaN(amount)) {
+      setError(true)
+      return
+    }
 
     // Send value
+    setError(false)
   }
 
   return (
     <>
       <h3>Add your $$$ budget for this week</h3>
+
+      { error ? 'This is not a correct value' : null }
+
       <form
         onSubmit={ addBudget }
       >
