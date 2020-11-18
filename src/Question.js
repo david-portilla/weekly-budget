@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import Error from './Error'
+
+
 
 const Question = () => {
 
@@ -27,7 +30,7 @@ const Question = () => {
     <>
       <h3>Add your $$$ budget for this week</h3>
 
-      { error ? 'This is not a correct value' : null }
+      { error ? <Error msg="This is not a right value" /> : null }
 
       <form
         onSubmit={ addBudget }
