@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Form from './Form';
 import Question from './Question';
 
 function App () {
@@ -18,6 +19,14 @@ function App () {
           saveBudget={ saveBudget }
           setRemainBudget={ setRemainBudget }
         />
+
+        <div className="row">
+          <div className="one-half column">
+            <Form></Form>
+          </div>
+          <div className="one-half column">2</div>
+        </div>
+
       </div>
     </div>
   );
