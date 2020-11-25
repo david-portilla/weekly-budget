@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import Error from './Error'
 
 const Question = ({ saveBudget, setRemainBudget, updateQuestion }) => {
@@ -52,6 +53,12 @@ const Question = ({ saveBudget, setRemainBudget, updateQuestion }) => {
       </form>
     </>
   )
+}
+
+Question.propTypes = {
+  saveBudget: PropTypes.func.isRequired,
+  setRemainBudget: PropTypes.func.isRequired,
+  updateQuestion: PropTypes.func.isRequired,
 }
 
 export default Question
