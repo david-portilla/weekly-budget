@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import Error from './Error'
 
 const Form = () => {
 
   const [ name, setName ] = useState('')
   const [ amount, setAmount ] = useState(0)
+  const [ error, setError ] = useState(false)
 
   const saveName = e => {
     setName(e.target.value)
@@ -15,7 +17,16 @@ const Form = () => {
 
   // Add expense to global state
   const addExpense = e => {
-    e.preventDefault
+    e.preventDefault()
+
+    // Validate value
+    if (amount < 1 || isNaN(amount) || name.trim() === '') {
+      setError(true)
+      return
+    }
+
+    // Save expense
+    setError(false)
   }
 
   return (
@@ -23,6 +34,8 @@ const Form = () => {
       onSubmit={ addExpense }
     >
       <h2>Add your expenses here</h2>
+
+      { error ? <Error msg="Both fiels are mandatory or incorrect value on expense" /> : null }
 
       <div className="campo">
         <label htmlFor="expense-name">Expense name</label>
