@@ -1,14 +1,15 @@
 import React from 'react'
+import { checkBudget } from '../helpers/helpers'
 
-const HandleBudget = ({budget, remainBudget}) => {
+const HandleBudget = ({ budget, remainBudget }) => {
   return (
     <>
       <div className="alert alert-primary">
-        Budget: ${budget}
+        Budget: ${ budget }
       </div>
 
-      <div className="alert">
-        Remaining budget: ${remainBudget}
+      <div className={ checkBudget(budget, remainBudget) }>
+        Remaining budget: ${ remainBudget }
       </div>
     </>
   )
