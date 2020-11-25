@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form = () => {
+
+  const [ name, setName ] = useState('')
+  const [ amount, setAmount ] = useState(0)
+
+  const saveName = e => {
+    setName(e.target.value)
+  }
+
+  const saveAmount = e => {
+    setAmount(parseInt(e.target.value, 10))
+  }
+
+  // Add expense to global state
+  const addExpense = e => {
+    e.preventDefault
+  }
+
   return (
-    <form>
+    <form
+      onSubmit={ addExpense }
+    >
       <h2>Add your expenses here</h2>
 
       <div className="campo">
@@ -12,16 +31,20 @@ const Form = () => {
           className="u-full-width"
           id="expense-name"
           placeholder="Ex. Metro"
+          value={ name }
+          onChange={ saveName }
         />
       </div>
 
       <div className="campo">
         <label htmlFor="expense-amount">Expense amount</label>
         <input
-          type="text"
+          type="number"
           className="u-full-width"
           id="expense-amount"
           placeholder="Ex. 200"
+          value={ amount }
+          onChange={ saveAmount }
         />
       </div>
 
